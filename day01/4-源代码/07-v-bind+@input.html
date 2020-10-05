@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>07-v-bind+@input</title>
+    <!-- 1.0 引入vue.js文件 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <!-- 2.0 写好视图部分(MVVM中的view) -->
+    <div id="app">
+      <!-- 完整写法 -->
+      <form>
+        用户名：<input
+          name="username"
+          :value="username"
+          @input="changeValue"
+          type="text"
+          placeholder="请输入用户名"
+        /><br />
+        密码：<input
+          name="password"
+          :value="password"
+          @input="changeValue"
+          type="password"
+          placeholder="请输入密码"
+        /><br />
+        <input @click.prevent="login" type="submit" value="登 录" />
+      </form>
+    </div>
+
+    <script>
+      // 3.0 创建vue实例(MVVM中的vm)，并且写好el、data(MVVM中的model)中的内容
+      /**
+       * 参数说明
+       * el: 告诉vue实例解析哪块内容
+       * data：这个是模型数据，给视图展示提供数据的
+       */
+      var vm = new Vue({
+        el: '#app',
+        data: {
+          username: 'admin',
+          password: '123456'
+        },
+        methods: {
+          login () {
+            console.log(this.username, this.password)
+          },
+          changeValue (event) {
+            this[event.target.name] = event.target.value
+          }
+        }
+      })
+    </script>
+  </body>
+</html>

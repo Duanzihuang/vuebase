@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hello World</title>
+    <!-- 1.0 引入vue.js文件 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <!-- 2.0 写好视图部分(MVVM中的view)，并且使用vue中的指令插值表达式 -->
+    <div id="app">
+      <p>{{message}}</p>
+    </div>
+
+    <script>
+      // 3.0 创建vue实例(MVVM中的vm)，并且写好el、data(MVVM中的model)中的内容
+      /**
+       * 参数说明
+       * el: 告诉vue实例解析哪块内容
+       * data：这个是模型数据，给视图展示提供数据的
+       */
+      var vm = new Vue({
+        el: '#app',
+        data: {
+          message: 'Hello World'
+        }
+      })
+    </script>
+  </body>
+</html>

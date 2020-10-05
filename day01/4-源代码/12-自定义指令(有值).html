@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>12-自定义指令(有值)</title>
+  </head>
+  <body>
+    <!-- 2.0 写好视图部分(MVVM中的view) -->
+    <div id="app">
+      <!-- 完整写法 -->
+      <input v-color="{color:'purple'}" type="text" />
+    </div>
+
+    <!-- 1.0 引入vue.js文件 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      // 3.0 创建vue实例(MVVM中的vm)，并且写好el、data(MVVM中的model)中的内容
+      /**
+       * 参数说明
+       * el: 告诉vue实例解析哪块内容
+       * data：这个是模型数据，给视图展示提供数据的
+       */
+      //   Vue.directive('focus', {
+      //     // 当被绑定的元素插入到 DOM 中时……
+      //     inserted: function (el) {
+      //       // 聚焦元素
+      //       el.focus()
+      //     }
+      //   })
+      var vm = new Vue({
+        el: '#app',
+        directives: {
+          color: {
+            // 指令的定义
+            inserted: function (el, binding) {
+              el.style.backgroundColor = binding.value.color
+            }
+          }
+        }
+      })
+    </script>
+  </body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>04-v-bind</title>
+    <!-- 1.0 引入vue.js文件 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <!-- 2.0 写好视图部分(MVVM中的view) -->
+    <div id="app">
+      <!-- 完整写法 -->
+      <img v-bind:src="imgUrl" alt="" />
+      <a v-bind:href="linkUrl">传送门</a>
+      <br />
+      <!-- 简写 -->
+      <img :src="imgUrl" alt="" />
+      <a :href="linkUrl">传送门</a>
+    </div>
+
+    <script>
+      // 3.0 创建vue实例(MVVM中的vm)，并且写好el、data(MVVM中的model)中的内容
+      /**
+       * 参数说明
+       * el: 告诉vue实例解析哪块内容
+       * data：这个是模型数据，给视图展示提供数据的
+       */
+      var vm = new Vue({
+        el: '#app',
+        data: {
+          imgUrl:
+            'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1601882460073&di=16d5c9912052cd5d375c81dcbabe7b70&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fbaike%2Fpic%2Fitem%2F0b14ad195b4c801542a9ad7e.jpg',
+          linkUrl: 'http://www.baidu.com'
+        }
+      })
+    </script>
+  </body>
+</html>

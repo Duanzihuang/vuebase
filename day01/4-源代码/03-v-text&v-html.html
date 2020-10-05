@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>03-v-text&v-html</title>
+    <!-- 1.0 引入vue.js文件 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <!-- 2.0 写好视图部分(MVVM中的view)-->
+    <div id="app">
+      <p v-text="msssage"></p>
+      <p v-text="isMan ? '男士' : '女士'"></p>
+      <p v-text="number + 3"></p>
+      <p v-text="html"></p>
+      <p v-html="html"></p>
+    </div>
+
+    <script>
+      // 3.0 创建vue实例(MVVM中的vm)，并且写好el、data(MVVM中的model)中的内容
+      /**
+       * 参数说明
+       * el: 告诉vue实例解析哪块内容
+       * data：这个是模型数据，给视图展示提供数据的
+       */
+      var vm = new Vue({
+        el: '#app',
+        data: {
+          message: 'Hello World',
+          isMan: true,
+          number: 6,
+          html: '<p style="color:red;"> v-text 与 v-html </p>'
+        }
+      })
+    </script>
+  </body>
+</html>

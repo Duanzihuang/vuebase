@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>05-v-on</title>
+    <!-- 1.0 引入vue.js文件 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <!-- 2.0 写好视图部分(MVVM中的view) -->
+    <div id="app">
+      <!-- 完整写法 -->
+      <p>{{msg}}</p>
+      <button v-on:click="changeMsg">change</button>
+      <button v-on:click="changeMsgEvent">changeEvent</button>
+      <button v-on:click="changeMsg2('你好')">change2</button>
+      <button v-on:click="changeMsg2Event('你好啊',$event)">
+        change2Event
+      </button>
+      <br />
+      <br />
+      <div
+        style="width:200px;height:200px;background-color: red;"
+        @click="parentClick"
+      >
+        <div
+          style="width:100px;height:100px;background-color: green;"
+          @click.stop="childClick"
+        ></div>
+      </div>
+      <br />
+      <input @keyup.enter="search" placeholder="请输入关键字搜索" type="text" />
+    </div>
+
+    <script>
+      // 3.0 创建vue实例(MVVM中的vm)，并且写好el、data(MVVM中的model)中的内容
+      /**
+       * 参数说明
+       * el: 告诉vue实例解析哪块内容
+       * data：这个是模型数据，给视图展示提供数据的
+       */
+      var vm = new Vue({
+        el: '#app',
+        data: {
+          msg: 'Hello World'
+        },
+        methods: {
+          changeMsg () {
+            this.msg = 'Hello Vue'
+          },
+          changeMsgEvent (event) {
+            console.log(event)
+          },
+          changeMsg2 (msg) {
+            this.msg = msg
+          },
+          changeMsg2Event (msg, event) {
+            this.msg = msg
+            console.log(event)
+          },
+          childClick () {
+            console.log('child click')
+          },
+          parentClick () {
+            console.log('parent click')
+          },
+          search (event) {
+            console.log('搜索', event.target.value)
+          }
+        }
+      })
+    </script>
+  </body>
+</html>
