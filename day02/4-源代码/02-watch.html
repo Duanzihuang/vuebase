@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>02-watch</title>
+    <!-- 引入vue.js -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <!-- MVVM中的 view -->
+    <div id="app">
+      <input v-model="firstName" type="text" />
+      <input v-model="lastName" type="text" />
+      {{fullName}}
+      <br /><br />
+      <input v-model="person.name" type="text" />
+      <br />
+      <ul>
+        <li v-for="item in persons" :key="item.id">
+          {{item.name}}-{{item.age}}
+        </li>
+      </ul>
+      <button @click="addPerson">add</button>
+      <button @click="changePerson">change</button>
+    </div>
+
+    <script>
+      // MVVM中的 vm 和 model
+      var vm = new Vue({
+        el: '#app',
+        data: {
+          firstName: '',
+          lastName: '',
+          fullName: '',
+          person: {
+            name: 'lisi',
+            age: 30
+          },
+          persons: [{ id: 1001, name: 'zhangsan', age: 80 }]
+        },
+        watch: {
+          firstName (newValue, oldValue) {
+            console.log(newValue, oldValue)
+            this.fullName = newValue + ' ' + this.lastName
+          },
+          lastName (newValue, oldValue) {
+            this.fullName = this.firstName + ' ' + newValue
+          },
+          person: {
+            deep: true, // 该回调会在任何被侦听的对象的 property 改变时被调用，不论其被嵌套多深
+            handler: function (newValue) {
+              console.log(newValue)
+            }
+          },
+          persons: {
+            immediate: true, // 该回调将会在侦听开始之后被立即调用
+            deep: true, // 该回调会在任何被侦听的对象的 property 改变时被调用，不论其被嵌套多深
+            handler: function (newValue) {
+              console.log(newValue)
+            }
+          }
+        },
+        methods: {
+          addPerson () {
+            this.persons.push({ id: 1002, name: 'lisi', age: 30 })
+          },
+          changePerson () {
+            this.persons[1].name = 'wangwu'
+            this.persons[1].age = 20
+          }
+        }
+      })
+    </script>
+  </body>
+</html>

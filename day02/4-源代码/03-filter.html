@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>03-filter</title>
+    <!-- 引入vue.js -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- 引入moment -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/moment.js/1.0.0/moment.js"></script>
+  </head>
+  <body>
+    <!-- MVVM中的 view -->
+    <div id="app">
+      日期是：<span>{{date | formatDate}}</span><br /><br />
+      时间是：<span>{{date | formatTime('HH:mm:ss')}}</span>
+    </div>
+
+    <script>
+      // MVVM中的 vm 和 model
+      var vm = new Vue({
+        el: '#app',
+        data: {
+          date: new Date()
+        },
+        filters: {
+          formatDate (val) {
+            return moment(val).format('YYYY-MM-DD')
+          },
+          formatTime (val, format) {
+            return moment(val).format(format)
+          }
+        }
+      })
+    </script>
+  </body>
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>06-图书管理</title>
+    <!-- 引入vue.js -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- 引入moment -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/moment.js/1.0.0/moment.js"></script>
+    <style type="text/css">
+      .grid {
+        margin: auto;
+        width: 530px;
+        text-align: center;
+      }
+      .grid table {
+        border-top: 1px solid #c2d89a;
+        width: 100%;
+        border-collapse: collapse;
+      }
+      .grid th,
+      td {
+        padding: 10;
+        border: 1px dashed #f3dcab;
+        height: 35px;
+        line-height: 35px;
+      }
+      .grid th {
+        background-color: #f3dcab;
+      }
+      .grid .book {
+        padding-bottom: 10px;
+        padding-top: 5px;
+        background-color: #f3dcab;
+      }
+      .grid .total {
+        height: 30px;
+        line-height: 30px;
+        background-color: #f3dcab;
+        border-top: 1px solid #c2d89a;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div class="grid">
+        <div>
+          <h1>图书管理</h1>
+          <div class="book">
+            <div>
+              <label for="id">
+                编号：
+              </label>
+              <input :disabled="isEdit" type="text" v-model="id" id="id" />
+              <label for="name">
+                名称：
+              </label>
+              <input v-focus type="text" v-model="name" id="name" />
+              <button :disabled="submitFlag" @click="submit">提交</button>
+            </div>
+          </div>
+        </div>
+        <div class="total">
+          <span>图书总数：</span>
+          <span>{{total}}</span>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>编号</th>
+              <th>名称</th>
+              <th>时间</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="item in books" :key="item.id">
+              <td>{{item.id}}</td>
+              <td>{{item.name}}</td>
+              <td>{{item.date | formatTime}}</td>
+              <td>
+                <a @click.prevent="update(item.id,item.name)" href="">修改</a>
+                <span>|</span>
+                <a @click.prevent="del(item.id)" href="">删除</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <script>
+      Vue.directive('focus', {
+        inserted: function (el) {
+          // 聚焦元素
+          el.focus()
+        }
+      })
+      Vue.filter('formatTime', (val, formatStr = 'YYYY-MM-DD HH:mm:ss') => {
+        return moment(val).format(formatStr)
+      })
+      var vm = new Vue({
+        el: '#app',
+        data: {
+          id: '',
+          name: '',
+          isEdit: false, // 是否是编辑
+          submitFlag: false,
+          books: []
+        },
+        computed: {
+          total () {
+            return this.books.length
+          }
+        },
+        mounted () {
+          // 该生命周期钩子函数被触发的时候，模板已经可以使用
+          // 一般此时用于获取后台数据，然后把数据填充到模板
+          var data = [
+            {
+              id: 1,
+              name: '三国演义',
+              date: 2525609975000
+            },
+            {
+              id: 2,
+              name: '水浒传',
+              date: 2525609975000
+            },
+            {
+              id: 3,
+              name: '红楼梦',
+              date: 2525609975000
+            },
+            {
+              id: 4,
+              name: '西游记',
+              date: 2525609975000
+            }
+          ]
+          this.books = data
+        },
+        watch: {
+          name (val) {
+            this.submitFlag = this.books.find(item => item.name === val)
+          }
+        },
+        methods: {
+          // 提交
+          submit () {
+            if (this.isEdit) {
+              // 编辑
+              const item = this.books.find(item => item.id === this.id)
+
+              item.name = this.name
+              item.date = new Date()
+            } else {
+              // 新增
+              this.books.push({
+                id: this.id,
+                name: this.name,
+                date: new Date()
+              })
+            }
+
+            this.id = ''
+            this.name = ''
+            this.isEdit = false
+          },
+          // 删除
+          del (id) {
+            const index = this.books.findIndex(item => item.id === id)
+
+            this.books.splice(index, 1)
+          },
+          // 修改
+          update (id, name) {
+            this.id = id
+            this.name = name
+            this.isEdit = true
+          }
+        }
+      })
+    </script>
+  </body>
+</html>

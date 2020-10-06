@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>01-computed</title>
+    <!-- 引入vue.js -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <!-- MVVM中的 view -->
+    <div id="app">
+      <input v-model.number="num" type="text" /><br />
+      平方值:{{squareValue}}
+    </div>
+
+    <script>
+      // MVVM中的 vm 和 model
+      var vm = new Vue({
+        el: '#app',
+        data: {
+          num: 5
+        },
+        computed: {
+          squareValue () {
+            return this.num * this.num
+          }
+        }
+      })
+    </script>
+  </body>
+</html>

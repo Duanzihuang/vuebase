@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>04-life</title>
+    <!-- 引入vue.js -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <!-- MVVM中的 view -->
+    <div id="app">
+      <p>{{msg}}</p>
+      <button @click="msg = '你好'">change</button>
+    </div>
+
+    <script>
+      // MVVM中的 vm 和 model
+      var vm = new Vue({
+        el: '#app',
+        data: {
+          msg: 'Hello World'
+        },
+        beforeCreate () {
+          console.log('---beforeCreate---')
+        },
+        created () {
+          console.log('---created---')
+        },
+        beforeMount () {
+          console.log('---beforeMount---')
+        },
+        mounted () {
+          console.log('---mounted---')
+        },
+        beforeUpdate () {
+          console.log('---beforeUpdate---')
+        },
+        updated () {
+          console.log('---updated---')
+        }
+      })
+    </script>
+  </body>
+</html>
