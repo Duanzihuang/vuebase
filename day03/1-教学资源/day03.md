@@ -90,7 +90,7 @@
 
 2. 在`components_test`文件夹中创建一个根组件`App.vue`，并且写好里面的三部分内容
 
-3. 打开终端，切换到`components_test`目录，执行`vue serve App.vue`，然后打开浏览器输入http://localhost:8080/即可看到效果，代码如下
+3. 打开终端，切换到`components_test`目录，执行`vue serve App.vue`，然后打开浏览器输入[http://localhost:8080/](http://localhost:8080/)即可看到效果，代码如下
 
    ```vue
    <template>
@@ -136,7 +136,7 @@
 
 - **如果我们使用vue脚手架的快速原型开发来查看效果的话，我们还需要额外安装一个全局包`@vue/cli-service-global`，安装命令`npm i @vue/cli-service-global -g`**
 - 使用快速原型开发，当我们更改了源代码之后，脚手架会帮助我们进行编译和重新运行
-- 如果不想手动的输入http://localhost:8080/，也可以在运行的时候，直接在指令后面加上`--open`，比如`vue serve App.vue --open`
+- 如果不想手动的输入[http://localhost:8080/](http://localhost:8080/)，也可以在运行的时候，直接在指令后面加上`--open`，比如`vue serve App.vue --open`
 - 当运行了`vue serve App.vue --open`之后，它会在项目目录下生成一个`node_modules`文件夹，里面存放的是一些依赖信息，不用管它
 
 代码实现：
