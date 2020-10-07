@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>01-组件</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <login></login>
+      <my-footer />
+    </div>
+  </body>
+  <script>
+    // 注册组件（带逻辑）
+    Vue.component('login', {
+      // 描述组件视图
+      template: `
+            <div>
+                用户名：<input type="text" v-model="username"/><br/>
+                密码：<input type="password" v-model="password"/><br/>
+                <button @click="login">登录</button>
+            </div>
+          `,
+      data () {
+        return {
+          username: '',
+          password: ''
+        }
+      },
+      methods: {
+        login () {
+          console.log(this.username, this.password)
+        }
+      }
+    })
+    // 注册组件（不带逻辑）
+    Vue.component('my-footer', {
+      template: `<div>
+        <p>关于我们| 联系我们| 联系客服| 合作招商| 商家帮助| 营销中心| 手机京东| 友情链接| 销售联盟| 京东社区| 风险监测| 隐私政策| 京东公益| English Site| Media & IR</p>
+      </div>`
+    })
+    var vm = new Vue({
+      el: '#app'
+    })
+  </script>
+</html>
