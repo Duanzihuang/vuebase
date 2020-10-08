@@ -1,0 +1,9 @@
+<template>
+  <div>
+    <ul>
+      <li>常德牛肉粉</li>
+      <li>辣椒炒肉</li>
+      <li>米豆腐</li>
+    </ul>
+  </div>
+</template>
