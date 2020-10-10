@@ -40,7 +40,7 @@
 
 - 响应数据
 
-```json
+```js
 {
     status: 0,
     message: "获取数据成功",
@@ -71,7 +71,7 @@
 
 - 响应数据
 
-```json
+```js
 {
     status: 0,
     message: "新增数据成功",
@@ -103,7 +103,7 @@
 
 - 响应数据
 
-```json
+```js
 {
     status: 0,
     message: "修改数据成功",
@@ -135,14 +135,15 @@
 
 - 响应数据
 
-```json
+```js
 {
     status: 0,
-    message: "删除数据成功",
-    data: {
+	message: "删除数据成功",
+	data: {
     	id: 1003,
         name: "zhaoliu",
     	age: 40
     }
 }
 ```
+
