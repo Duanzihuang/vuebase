@@ -84,6 +84,9 @@
                 <a @click.prevent="del(item.id)" href="">删除</a>
               </td>
             </tr>
+            <tr v-if="books.length === 0">
+              <td colspan="4">暂无数据~</td>
+            </tr>
           </tbody>
         </table>
       </div>

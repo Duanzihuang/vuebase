@@ -148,7 +148,13 @@
             id: 10960679,
             name: "SNH48一期生“一期一会”纪念演唱会",
             picUrl: "https://p1.music.126.net/G8-8Pfemg4QHk6rxfufoSw==/109951165379778458.jpg",
-            playCount: 21475
+            playCount: 21475,
+            artists: [
+                {
+                    id: 35531
+					name: "Justin Bieber"
+                }
+            ]
         }
     ]
 }
@@ -257,8 +263,7 @@
 ```javascript
 {
     code: 200,
-    playlist: [
-		{
+    playlist: {
             id: 5272449993,
             coverImgUrl: "http://p2.music.126.net/2y0Xxnl5_KFal8Vp-Vxwtg==/109951165368620529.jpg",
             name: "秋天来了，要一起踩枫叶吗？",
@@ -289,8 +294,7 @@
                     dt: 272785
                 }
             ]
-        }
-    ]
+      }
 }
 ```
 
@@ -532,10 +536,10 @@
 ```javascript
 {
     code: 200,
-	data: {
+	data: [{
         id: 1485661414,
 		url: "http://m801.music.126.net/20201010231345/b22fc8e7cde4c2ef575c75e0a1ff7e14/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/4334125381/0f44/79e8/6688/9d1e308b3ad55f8012d74b108c42cabf.mp3"
-	}
+	}]
 }
 ```
 

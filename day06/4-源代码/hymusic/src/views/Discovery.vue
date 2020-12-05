@@ -130,6 +130,19 @@ export default {
     height: 100%;
     border-radius: 10px;
   }
+}
+</style>
+
+<style lang="less" scoped>
+.discovery-container {
+  // .el-carousel__container {
+  //   height: 230px;
+  // }
+  // .el-carousel__item img {
+  //   width: 100%;
+  //   height: 100%;
+  //   border-radius: 10px;
+  // }
   .title {
     font-weight: normal;
     margin-bottom: 20px;

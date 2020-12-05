@@ -510,3 +510,22 @@ export default {
 </script>
 ```
 
+## Async
+
+> 作用
+
+解决回调函数嵌套的问题，是Promise的升级版，它可以让我们的异步代码，看上去像'同步'一样的执行
+
+> 语法
+
+```js
+async function asyncFunc() {
+	const res = await promise对象
+}
+```
+
+> 注意点
+
+- async 和 await 一般是一起使用的
+- 实际开发中，如果能使用async，尽量使用async
+

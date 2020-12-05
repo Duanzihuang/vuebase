@@ -18,7 +18,7 @@ const router = new VueRouter({
   routes: [
     { path: '/newslist', component: NewsList },
     { path: '/foodlist', component: FoodList },
-    { path: '/', redirect: '/axios' },
+    { path: '/', redirect: '/login' },
     // query 传参配置
     { path: '/newsdetail', component: NewsDetail },
     // params 传参配置
